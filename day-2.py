@@ -11,6 +11,6 @@ total_bill_as_float = float(total_bill)
 total_tip = tip_as_percentage * total_bill_as_float
 people_as_int = int(people)
 pay_per_person = (total_bill_as_float + total_tip)/people_as_int
-amount_per_person_rounded = round(pay_per_person, 2)
+amount_per_person_rounded = "{:.2f}".format(pay_per_person, 2)
 
 print(f"${amount_per_person_rounded}")
