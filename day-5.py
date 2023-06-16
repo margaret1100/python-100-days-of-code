@@ -42,5 +42,26 @@ for element in password_list:
 print(password)
 
 
+#Hard Level - Order of characters randomised:
+#e.g. 4 letter, 2 symbol, 2 number = g^2jk8&P
+
+#track random order list len 
+random_order_list_len = 0
+random_order_list = []
+password_list_len = len(password_list) 
+
+while random_order_list_len < password_list_len:
+    rand_nr = random.randint(0, password_list_len-1)
+    if rand_nr not in random_order_list:
+        random_order_list.append(rand_nr)
+    random_order_list_len = len(random_order_list)
+
+hard_password = ''
+
+for number in random_order_list:
+    hard_password += str(password_list[number])
+
+print(hard_password)
+
 
 
