@@ -7,25 +7,21 @@ def turn_right():
     turn_left()
     turn_left()
 
-counter = 1
+while front_is_clear():
+    move()
+turn_left()
     
 while not at_goal():
-    if front_is_clear() and right_is_clear():
-        move()
-    elif right_is_clear():
+    if right_is_clear():
         turn_right()
         move()
-        counter += 1
     elif front_is_clear():
         move()
-        counter += 1
     else:
         turn_left()
         if front_is_clear():
             move()
-            counter += 1
         else:
             turn_left()
-            counter += 1
 
     
