@@ -1,3 +1,5 @@
+#Step 3
+
 import random
 
 word_list = ["aardvark", "baboon", "camel"]
@@ -5,18 +7,22 @@ word_list = ["aardvark", "baboon", "camel"]
 # pick a random word and assign it to chosen word
 chosen_word = random.choice(word_list)
 
-guess = input("Pick a letter\n").lower()
-
 word_length = len(chosen_word)
-
-hangman_list = []
-# Create list with blanks to reprsent the random word
+# Create list to put letter display
+display = []
 for n in range(word_length):
-  hangman_list.append("_")
+  display.append("_")
 
-# check for match and replace matches with the guess
-for position in range(word_length):
-  if guess == chosen_word[position]:
-    hangman_list[position] = guess
+blanks_left = display.count('_')
 
-print(hangman_list)
+while blanks_left > 0:
+  guess = input("Pick a letter\n").lower()
+  
+  # check for match and replace matches with the guess
+  for position in range(word_length):
+    if guess == chosen_word[position]:
+      display[position] = guess
+  blanks_left = display.count('_')
+  print(display)  
+  
+
