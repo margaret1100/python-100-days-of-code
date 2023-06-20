@@ -1,5 +1,3 @@
-#Create a hangman game
-
 import random
 
 word_list = ["aardvark", "baboon", "camel"]
@@ -7,11 +5,18 @@ word_list = ["aardvark", "baboon", "camel"]
 # pick a random word and assign it to chosen word
 chosen_word = random.choice(word_list)
 
-guess = input('Pick a letter\n').lower()
+guess = input("Pick a letter\n").lower()
 
-# iterate through word to check for match
-for letter in chosen_word:
-  if guess == letter:
-    print('match')
-  else:
-    print('no match')
+word_length = len(chosen_word)
+
+hangman_list = []
+# Create list with blanks to reprsent the random word
+for n in range(word_length):
+  hangman_list.append("_")
+
+# check for match and replace matches with the guess
+for position in range(word_length):
+  if guess == chosen_word[position]:
+    hangman_list[position] = guess
+
+print(hangman_list)
