@@ -10,8 +10,8 @@ chosen_word = random.choice(word_list)
 guess = input('Pick a letter\n').lower()
 
 # iterate through word to check for match
-for n in range(len(chosen_word)):
-  if guess == chosen_word[n]:
+for letter in chosen_word:
+  if guess == letter:
     print('match')
   else:
     print('no match')
