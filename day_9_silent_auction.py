@@ -12,16 +12,16 @@ while continue_bidding != "no":
 	bid = int(input("What is your bid?\n"))
 	bidding_dict[name] = bid
 
-	continue_bidding = input("Are there any other bidders?\n").lower()
+	continue_bidding = input("Are there any other bidders? Type yes or no.\n").lower()
 	os.system("clear")
 
 
 highest_bid = 0
 highest_bidder = ""
 
-for bid in bidding_dict:
-	if bidding_dict[bid] > highest_bid:
-		highest_bid = bidding_dict[bid]
-		highest_bidder = bid
+for bidder in bidding_dict:
+	if bidding_dict[bidder] > highest_bid:
+		highest_bid = bidding_dict[bidder]
+		highest_bidder = bidder
 
 print(f"The winner is {highest_bidder} with a bid of ${highest_bid}")
