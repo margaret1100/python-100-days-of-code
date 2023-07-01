@@ -1,4 +1,4 @@
-import day_8_caesar_cipher
+import day_08_caesar_cipher_art
 
 alphabet = [
     'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o',
@@ -6,7 +6,7 @@ alphabet = [
     'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
 ]
 
-print(day_8_caesar_cipher.logo)
+print(day_08_caesar_cipher_art.logo)
 continue_program = 'yes'
 
 def caesar(given_text, shift_amount, cipher_direction):

@@ -1,11 +1,11 @@
 import os
-import day_9_gavel_art
+import day_09_gavel_art
 
 
 bidding_dict = {}
 continue_bidding = "yes"
 
-print(day_9_gavel_art.logo)
+print(day_09_gavel_art.logo)
 
 while continue_bidding != "no":
 	name = input("What is your name?\n")
