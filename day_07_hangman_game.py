@@ -1,14 +1,14 @@
 #Step 3
 
 import random
-import day_7_ascii_art
-import day_7_word_list
+import day_07_ascii_art
+import day_07_word_list
 import os
 
-print(day_7_ascii_art.logo)
+print(day_07_ascii_art.logo)
 
 # pick a random word and assign it to chosen word
-chosen_word = random.choice(day_7_word_list.word_list)
+chosen_word = random.choice(day_07_word_list.word_list)
 
 word_length = len(chosen_word)
 
@@ -40,7 +40,7 @@ while end_of_game == False:
                 display[position] = guess
         blanks_left = display.count('_')
 
-        day_7_ascii_art.stages[lives]
+        day_07_ascii_art.stages[lives]
 
         # Check if word has been solved.
         if '_' not in display:
@@ -65,7 +65,7 @@ while end_of_game == False:
 
     print("".join(display))
 
-    print(day_7_ascii_art.stages[lives])
+    print(day_07_ascii_art.stages[lives])
 
     guess_list.append(guess)
 
