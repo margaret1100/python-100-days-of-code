@@ -1,4 +1,6 @@
 
+import day_10_calc_logo
+
 # Create add, subtract, multiply, and divide functions
 
 def add(n1, n2):
@@ -22,7 +24,8 @@ function_dict = {
 }
 
 def calculator():
-	num1 = int(input("What is the first number?"))
+	print(day_10_calc_logo.logo)
+	num1 = float(input("What is the first number?"))
 	keep_calculating = True
 
 
@@ -31,7 +34,7 @@ def calculator():
 			print(function)
 
 		operation = input("Pick an operation from the line above.")
-		num2 = int(input("what is the next number?"))
+		num2 = float(input("what is the next number?"))
 
 		answer = function_dict[operation](num1, num2)
 
