@@ -20,22 +20,21 @@ def calculate_score(cards):
 
 	for card in cards:
 		if card == 11:
-			counter += 1
+			ace_counter += 1
 
 	score = sum(cards)
-	if score > 21 and ace_counter > 0:
-		while score > 21:
-			score -= 10
-			ace_counter -= 1
+	while ace_counter > 0 and score > 21:
+		score -= 10
+		ace_counter -= 1
+
 	return score
 
+def print_final_hands(player_list, dealer_list):
+	print(f" Your final hand: {player_list}: final score: {calculate_score(player_list)}")
+	print(f" The Dealer's final hand: {dealer_list}: final score: {calculate_score(dealer_list)}")
+
+
 def black_jack():
-
-	play_game = input("Do you want to play a game of Blackjack? Type 'y' or 'n'".lower())
-
-	if play_game == 'n':
-		play_game = 'n'
-		return play_game
 
 	# Draw cards
 
@@ -58,6 +57,7 @@ def black_jack():
 		players_cards.append(random.choice(cards))
 		score = calculate_score(players_cards)
 		if score > 21:
+			print_final_hands(players_cards, computer_cards)
 			result = "You lose, bust!"
 			return result
 		else:
@@ -66,21 +66,28 @@ def black_jack():
 	while calculate_score(computer_cards) < 17:
 		computer_cards.append(random.choice(cards))
 		if calculate_score(computer_cards) > 21:
+			print_final_hands(players_cards, computer_cards)
 			result = "Dealer busts!"
 			return result
 
-	if calculate_score(computer_cards) > calculate_score(player_cards):
-		result = "Dealer wins with {calculate_score(computer_cards)}"
-	elif calculate_score(computer_cards) == calculate_score(player_cards):
+	if calculate_score(computer_cards) > calculate_score(players_cards):
+		result = "Dealer wins!"
+	elif calculate_score(computer_cards) == calculate_score(players_cards):
 		result = "Draw"
 	else:
-		result = "Player wins with {calculate_score(player_cards)}"
+		result = "You win!}"
 
+	print_final_hands(players_cards, computer_cards)
 	return result
 
 
-print(black_jack())
+while True:
+	play_game = input("Do you want to play a game of Blackjack? Type 'y' or 'n'".lower())
 
+	if play_game == 'n':
+		break
+	else:
+		print(black_jack())
 
 
 
