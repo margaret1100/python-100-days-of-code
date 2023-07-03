@@ -18,6 +18,7 @@ import day_11_blackjack_art
 cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
 
 def calculate_score(cards):
+	# Calculate score -  consider aces can be 1 or 11
 	ace_counter = 0
 
 	for card in cards:
@@ -32,9 +33,13 @@ def calculate_score(cards):
 	return score
 
 def print_final_hands(player_list, dealer_list):
+	# print final hands
 	print(f"Your final hand: {player_list}: final score: {calculate_score(player_list)}")
 	print(f"The Dealer's final hand: {dealer_list}: final score: {calculate_score(dealer_list)}")
 
+def deal_card():
+	# Deal a random card from the deck
+	return random.choice(cards)
 
 def black_jack():
 
@@ -42,9 +47,13 @@ def black_jack():
 
 	# Draw cards
 
-	players_cards = [random.choice(cards), random.choice(cards)]
+	players_cards = []
+	computer_cards = []
 
-	computer_cards = [random.choice(cards), random.choice(cards)]
+	# deal 2 cards to get started
+	for _ in range(2):
+		players_cards.append(deal_card())
+		computer_cards.append(deal_card())
 
 	print(f"Your cards: {players_cards}, current score: {calculate_score(players_cards)}")
 	print(f"Computer's first card is: {computer_cards[0]}")
@@ -58,7 +67,7 @@ def black_jack():
 		if additional_card == 'n':
 			draw_cards = False
 			continue
-		players_cards.append(random.choice(cards))
+		players_cards.append(deal_card())
 		score = calculate_score(players_cards)
 		if score > 21:
 			print_final_hands(players_cards, computer_cards)
@@ -68,7 +77,7 @@ def black_jack():
 			continue
 
 	while calculate_score(computer_cards) < 17:
-		computer_cards.append(random.choice(cards))
+		computer_cards.append(deal_card())
 		if calculate_score(computer_cards) > 21:
 			print_final_hands(players_cards, computer_cards)
 			result = "Dealer busts!"
