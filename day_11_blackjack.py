@@ -12,6 +12,8 @@
 
 
 import random
+import os
+import day_11_blackjack_art
 
 cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
 
@@ -30,11 +32,13 @@ def calculate_score(cards):
 	return score
 
 def print_final_hands(player_list, dealer_list):
-	print(f" Your final hand: {player_list}: final score: {calculate_score(player_list)}")
-	print(f" The Dealer's final hand: {dealer_list}: final score: {calculate_score(dealer_list)}")
+	print(f"Your final hand: {player_list}: final score: {calculate_score(player_list)}")
+	print(f"The Dealer's final hand: {dealer_list}: final score: {calculate_score(dealer_list)}")
 
 
 def black_jack():
+
+	print(day_11_blackjack_art.logo)
 
 	# Draw cards
 
@@ -75,7 +79,7 @@ def black_jack():
 	elif calculate_score(computer_cards) == calculate_score(players_cards):
 		result = "Draw"
 	else:
-		result = "You win!}"
+		result = "You win!"
 
 	print_final_hands(players_cards, computer_cards)
 	return result
@@ -87,7 +91,9 @@ while True:
 	if play_game == 'n':
 		break
 	else:
+		os.system("clear")
 		print(black_jack())
+
 
 
 
