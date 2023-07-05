@@ -11,10 +11,22 @@ def set_difficulty():
 	difficulty = input("Choose a difficulty. Type 'easy' or 'hard': ").lower()
 
 	if difficulty == "easy":
-		lives = EASY_LEVEL
+		turns = EASY_LEVEL
 	elif difficulty == "hard":
-		lives = HARD_LEVEL
-	return lives
+		turns = HARD_LEVEL
+	return turns
+
+def check_answer(guess, answer, turns):
+	if guess > answer:
+		print("Too high.")
+		turns -= 1
+	elif guess < answer:
+		print("Too low.")
+		turns -= 1
+	else:
+		print(f"You got it! The answer was {answer}.")
+	return turns
+
 
 def number_guessing():
 
@@ -24,28 +36,20 @@ def number_guessing():
 
 	print("I'm thinking of a number between 1 and 100")
 
-	lives = set_difficulty()
+	turns = set_difficulty()
 
-	number_guessed = False
+	guessed_number = 0
 
-	while lives > 0 and number_guessed == False:
-		print(f"You have {lives} attempts remaining to guess the number.")
+	while guessed_number != rand_number:
+		print(f"You have {turns} attempts remaining to guess the number.")
 		guessed_number = int(input("Make a guess: "))
 
-		if guessed_number == rand_number:
-			print(f"You got it! The answer was {rand_number}.")
-			number_guessed = True
-		elif guessed_number > rand_number:
-			print("Too high.")
-			lives -= 1
-		else:
-			print("Too low.")
-			lives -= 1
-		if lives > 0 and number_guessed == False:
+		turns = check_answer(guessed_number, rand_number, turns) 
+		
+		if turns == 0:
+			print("You've run out of guesses, you lose")
+			return
+		elif guessed_number != rand_number:
 			print("Guess again.")
-
-	if lives == 0:
-		print("You've run out of guesses, you lose")
-
 
 number_guessing()
