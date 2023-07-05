@@ -4,6 +4,18 @@
 import random
 import day_12_number_guessing_art
 
+EASY_LEVEL = 10
+HARD_LEVEL = 5
+
+def set_difficulty():
+	difficulty = input("Choose a difficulty. Type 'easy' or 'hard': ").lower()
+
+	if difficulty == "easy":
+		lives = EASY_LEVEL
+	elif difficulty == "hard":
+		lives = HARD_LEVEL
+	return lives
+
 def number_guessing():
 
 	print(day_12_number_guessing_art.logo)
@@ -12,15 +24,7 @@ def number_guessing():
 
 	print("I'm thinking of a number between 1 and 100")
 
-	difficulty = input("Choose a difficulty. Type 'easy' or 'hard': ").lower()
-
-	if difficulty == "easy":
-		lives = 10
-	elif difficulty == "hard":
-		lives = 5
-	else:
-		print("Invalid entry, please rerun game and enter 'easy' or 'hard'")
-		return
+	lives = set_difficulty()
 
 	number_guessed = False
 
