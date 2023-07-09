@@ -53,7 +53,7 @@ else:
   print("This is an odd number.")
   
 
-#Leap year code
+# Leap year code
 year = int(input("Which year do you want to check?")) #converted input to int
 
 if year % 4 == 0:
@@ -66,3 +66,15 @@ if year % 4 == 0:
     print("Leap year.")
 else:
   print("Not leap year.")
+
+
+# FizzBuzz Code
+for number in range(1, 101):
+  if number % 3 == 0 or number % 5 == 0:
+    print("FizzBuzz")
+  if number % 3 == 0:
+    print("Fizz")
+  if number % 5 == 0:
+    print("Buzz")
+  else:
+    print([number])
