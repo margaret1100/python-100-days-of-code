@@ -54,7 +54,7 @@ else:
   
 
 #Leap year code
-year = input("Which year do you want to check?")
+year = int(input("Which year do you want to check?")) #converted input to int
 
 if year % 4 == 0:
   if year % 100 == 0:
