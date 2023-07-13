@@ -14,6 +14,9 @@ def get_account():
 
 
 def compare_accounts(account_a, account_b, answer):
+	
+	system("clear")
+	print(day_14_higher_lower_game_art.logo)
 
 	if account_a["follower_count"] > account_b["follower_count"]:
 		if answer == "a":
@@ -33,7 +36,7 @@ def print_accounts(account):
 
 
 def play_game():
-
+	print(day_14_higher_lower_game_art.logo)
 	score = 0
 
 	my_account_a = get_account() 
@@ -56,7 +59,6 @@ def play_game():
 		if compare_accounts(my_account_a, my_account_b, my_answer) == "correct":
 			my_account_a = my_account_b
 			score += 1
-			system("clear")
 			print(f"You're Right! Current score: {score}")
 
 		else:
