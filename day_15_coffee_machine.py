@@ -84,7 +84,8 @@ def coffee_machine():
         if change_comparison == 'insufficient':
             print("Sorry that's not enough money. Money refunded.")
         else:
-            print(f" Thank you, your change is {change_comparison}")
+            print(f"Thank you, your change is {change_comparison}")
+            print(f"Enjoy your {user_choice}!")
             remove_resources(user_choice)
     else:
         print("insufficient resources to make coffee")
