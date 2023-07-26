@@ -30,6 +30,8 @@ MENU = {
     }
 }
 
+profit = 0
+
 resources: Dict[str, int] = {
     "water": 300,
     "milk": 200,
@@ -40,12 +42,13 @@ resources: Dict[str, int] = {
 def print_report():
     for resource in resources:
         print(f"{resource.capitalize()} : {resources[resource]}")
+    print(f"Money: {locale.currency(profit)}")
 
 
 def sufficent_resources(coffee_type: str) -> bool:
-    ingredients_list = (MENU[coffee_type])
-    for resource in resources:
-        if (ingredients_list['ingredients'][resource]) > resources[resource]:
+    ingredients_list = (MENU[coffee_type]['ingredients'])
+    for ingredient in ingredients_list:
+        if (ingredients_list[ingredient]) > resources[ingredient]:
             return False
     return True
 
@@ -71,9 +74,11 @@ def compare_change(coffee_type):
 
 
 def remove_resources(coffee_type):
-    ingredients_list = (MENU[coffee_type])
-    for resource in resources:
-        resources[resource] -= ingredients_list['ingredients'][resource]
+    ingredients_list = (MENU[coffee_type]['ingredients'])
+    for ingredient in ingredients_list:
+        resources[ingredient] -= ingredients_list[ingredient]
+    global profit
+    profit += MENU[coffee_type]['cost']
 
 
 def coffee_machine():
@@ -84,7 +89,10 @@ def coffee_machine():
         if change_comparison == 'insufficient':
             print("Sorry that's not enough money. Money refunded.")
         else:
-            print(f"Thank you, your change is {change_comparison}")
+            if change_comparison == "$0.00":
+                print("Thank you, for the exact change!")
+            else:
+                print(f"Thank you, your change is {change_comparison}")
             print(f"Enjoy your {user_choice}!")
             remove_resources(user_choice)
     else:
